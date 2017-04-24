@@ -52,9 +52,6 @@ void gigaiotplatform_recvcb_ItgCnvyDataVO(const ItgCnvyDataVO * itgCnvyDataVO);
 
 void* tcp_receiver(void* arg)
 {
-	//struct sockaddr_in pcaddr;
-	//int addrlen = sizeof(pcaddr);
-	//unsigned char		buf[2];	// device id, value
 	LPIOT_PACKET lp_packet;
 	int result;
 	int len;
@@ -77,8 +74,6 @@ void* tcp_receiver(void* arg)
 				printf("TCP accept failed\n");
 				return;
 			}
-			//inet_ntop(AF_INET, &client_addr.sin_addr.s_addr, temp, sizeof(temp));
-			//printf("%s client connected\n", temp);
 			printf("Client Accepted\n");
 		}
 		else if (result == SOCKET_ERROR)
@@ -94,8 +89,6 @@ void* tcp_receiver(void* arg)
 				printf("TCP accept failed\n");
 				return;
 			}
-			//inet_ntop(AF_INET, &client_addr.sin_addr.s_addr, temp, sizeof(temp));
-			//printf("%s client connected\n", temp);
 			printf("Client Accepted\n");
 		}
 
@@ -185,50 +178,6 @@ void InitReceive(int port)
 		printf("bind error\n");
 		return;
 	}
-
-	//int len;
-	//char temp[20];
-
-	/*// make listen socket
-	if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == INVALID_SOCKET)
-	{
-		printf("TCP socket error\n");
-		return;
-	}
-
-	// NULL initialize
-	memset(&server_addr, 0x00, sizeof(server_addr));
-
-	// server_addr setting
-	server_addr.sin_family = AF_INET;
-	server_addr.sin_addr.s_addr = htonl(INADDR_ANY);
-	server_addr.sin_port = htons(port);
-
-	// bind
-	if (bind(server_fd, (struct sockaddr*)&server_addr, sizeof(server_addr)) == SOCKET_ERROR)
-	{
-		printf("TCP bind error\n");
-		return;
-	}
-
-	// listen
-	if (listen(server_fd, 5) < 0)
-	{
-		printf("TCP listen error\n");
-		return;
-	}
-
-	printf("Wait client...\n");
-	len = sizeof(client_addr);
-	client_fd = accept(server_fd, (struct sockaddr*)&client_addr, &len);
-	if (client_fd < 0)
-	{
-		printf("TCP accept failed\n");
-		return;
-	}
-	//inet_ntop(AF_INET, &client_addr.sin_addr.s_addr, temp, sizeof(temp));
-	//printf("%s client connected\n", temp);
-	printf("Client Accepted\n");*/
 }
 
 void InitSend(int port)
